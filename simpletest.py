@@ -1,8 +1,107 @@
-import math
+# import math
+# import re
+from f import f
+from csv_read import read_csv
+
+# text = "period_1_677278.ssa"
+# print(text)
+#
+# m = re.match(r"period_1_(.*)\.ssa", text)
+# print(m.group(1))
+
+
+
+
+data = bytes(b"1")
+print(data)
+print(bin(int(data, base=16)))
+
+data = bytes(b"9")
+print(data)
+print(bin(int(data, base=16)))
+
+data = bytes(b"10")
+print(data)
+print(bin(int(data, base=16)))
+
+data = bytes(b"a")
+print(data)
+print(bin(int(data, base=16)))
+
+data = bytes(b"15")
+print(data)
+print(bin(int(data, base=16)))
+
+data = bytes(b"f")
+print(data)
+print(bin(int(data, base=16)))
+
+data = bytes(b"6f")
+print(data)
+print(bin(int(data, base=16)))
+
+# data = bytes(b"w")
+# print(data)
+# print(bin(int(data, base=16)))
+
+
+
+encrypted_message = ""
+
+# split the message into 64bit blocks
+for x in range(0, len(array), 8):
+    print("\n", x)
+    bit64_binary_string = ""
+    bit64 = array[x:x+8]
+    print(bit64)
+    for y in bit64:
+        print(bin(y)[2:], "", end='')
+    print('')
+
+
+
+
+
+'''
+def substitution_X(sub_array, msg):
+    s = ""
+    for idx in sub_array:
+        s += msg[int(idx)]
+    return s
+
+
+def substitution_Y(array, bin_str):
+    sub = ""
+    for i in array:
+        sub += bin_str[int(i) - 1]
+    return sub
+
+
+
+file_path = "files/"
+__sbox = []
+
+pc_1 = read_csv(file_path, "pc_1.csv")
+e_bit_table = read_csv(file_path, "e_bit_table.csv")
+p_table = read_csv(file_path, "p_table.csv")
+temp_box = read_csv(file_path, "__sbox.csv")
+for x in range(8):
+    __sbox.append([])
+    for y in range(64):
+        __sbox[x].append(temp_box[(x*64)+y])
+
+K1 = 0b000110110000001011101111111111000111000001110010
+R0 = 0b11110000101010101111000010101010
+
+# print(R0, " : ", len(R0))
+# print(R0[32-1], R0[1-1], R0[2-1], R0[3-1], R0[4-1], R0[5-1], R0[4-1], R0[5-1], R0[6-1], R0[7-1], R0[8-1], R0[9-1],)
+print("outp:", bin(f(R0, K1, e_bit_table, __sbox, p_table))[2:].zfill(32))
+print("f   : 00100011010010101010100110111011")
+# print("  00100011010010101010100110111011")
 
 # print(bin(ord('B'))[2:])
 # print(bin(ord(' ')))
-'''
+
 
 
 key = ''
@@ -203,12 +302,12 @@ for k in range(0, len(keys)):
 '''
 
 
-from DES import data_encryption_system
-
-
-d = data_encryption_system()
-d.set_key("0")
-print(d.convert_to_ascii())
+# from DES import data_encryption_system
+#
+#
+# d = data_encryption_system()
+# d.set_key("0")
+# print(d.convert_to_ascii())
 # d.set_key("1")
 # print(d.convert_to_ascii())
 # d.set_key("2")
@@ -266,5 +365,3 @@ print(d.convert_to_ascii())
 #     # print(ch_binary)
 # print()
 # # 64 < ord(ch.upper()) < 71
-
-

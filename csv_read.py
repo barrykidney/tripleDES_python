@@ -1,15 +1,24 @@
 import csv
 
 
-def read_csv(filename):
+def read_csv(path, filename):
+    """Function to read csv files to a character array.
 
-    file = open(filename, "r")
-    reader = csv.reader(file)
-    x=[]
-    for r in reader:
-        for s in r:
-            x.append(s)
-    return x
+    Args:
+        path: The path to the file to be read.
+        filename: The name of the file to be read.
 
+    Returns:
+        The contents of the file in a character array format.
+    """
 
-print(read_csv("files/pc_1.csv"))
+    try:
+        file = open(path + filename, "r")
+        reader = csv.reader(file)
+        x = []
+        for r in reader:
+            for s in r:
+                x.append(s)
+        return x
+    except FileNotFoundError as err:
+        print(err.args)
