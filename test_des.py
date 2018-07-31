@@ -1,5 +1,7 @@
 import unittest
 from DES import DataEncryptionSystem
+from DES import *
+# from DES import *
 from csv_read import read_csv
 from f import *
 from Generate_keys import *
@@ -39,14 +41,20 @@ class DESTest(unittest.TestCase):
         self.d.set_key(param1)
         self.assertEqual(param2, self.d.convert_64bit_byte_array_to_bin_str(), 'Testing ' + param3)
 
-
     def test_function_f(self):
         K1 = 0b000110110000001011101111111111000111000001110010
         R0 = 0b11110000101010101111000010101010
         expect = "00100011010010101010100110111011"
-
-        bin(f(R0, K1, self.e_bit_table, self.__sbox, self.p_table))[2:].zfill(32)
+        # bin(f(R0, K1, self.e_bit_table, self.__sbox, self.p_table))[2:].zfill(32)
         self.assertEqual(expect, str(bin(f(R0, K1, self.e_bit_table, self.__sbox, self.p_table))[2:].zfill(32)), 'Testing f')
+
+    # def test_function_un_f(self):
+    #     K1 = 0b000110110000001011101111111111000111000001110010
+    #     Rn = "00100011010010101010100110111011"
+    #     expect = "11110000101010101111000010101010"
+    #     print("expect: ", expect)
+    #     # bin(f(Rn, K1, self.e_bit_table, self.__sbox, self.p_table))[2:].zfill(32)
+    #     self.assertEqual(expect, str(bin(un_f(Rn, K1, self.e_bit_table, self.__sbox, self.p_table))[2:].zfill(32)), 'Testing f')
 
     @unittest.skip("WIP")
     def test_missing_entry_raises_keyError(self):
@@ -62,6 +70,11 @@ class DESTest(unittest.TestCase):
         input =  "0000000100100011010001010110011110001001101010111100110111101111"
         expect = "1100110000000000110011001111111111110000101010101111000010101010"
         self.assertEqual(expect, substitution(self.ip, input))
+
+    def test_hex_to_bin(self):
+        input =  "1"
+        expect = "0001"
+        self.assertEqual(expect, DataEncryptionSystem.hex_to_bin(input))
 
 
 if __name__ == '__main__':

@@ -9,8 +9,6 @@ def remove_first_bit(numb):
 def split_key(k):
     c = {"c0": int(k[:28], 2)}
     d = {"d0": int(k[28:], 2)}
-    # print("c0: ", bin(int(k[:28], 2))[2:].zfill(28))
-    # print("d0: ", bin(int(k[28:], 2))[2:].zfill(28))
     return c, d
 
 

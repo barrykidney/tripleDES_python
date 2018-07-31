@@ -19,6 +19,7 @@ def read_csv(path, filename):
         for r in reader:
             for s in r:
                 x.append(s)
+        file.close()
         return x
     except FileNotFoundError as err:
         print(err.args)
